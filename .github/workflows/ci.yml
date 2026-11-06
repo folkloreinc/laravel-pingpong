@@ -69,7 +69,7 @@ jobs:
         runs-on: ubuntu-24.04
         env:
             # The Pingpong server the tests run against, built from source.
-            PINGPONG_REF: feature/7-client
+            PINGPONG_REF: main
         steps:
             - uses: actions/checkout@v5
 
