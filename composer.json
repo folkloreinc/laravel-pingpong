@@ -1,0 +1,74 @@
+{
+    "name": "folklore/laravel-pingpong",
+    "description": "Laravel broadcaster for Pingpong, the self-hosted, multi-tenant realtime server",
+    "keywords": [
+        "laravel",
+        "pingpong",
+        "broadcasting",
+        "realtime",
+        "websockets",
+        "socket.io"
+    ],
+    "homepage": "https://github.com/folkloreinc/laravel-pingpong",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Folklore",
+            "email": "info@folklore.email",
+            "homepage": "http://folkloreinc.ca"
+        },
+        {
+            "name": "David Mongeau-Petitpas",
+            "email": "dmp@folklore.email",
+            "homepage": "http://mongo.ca",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "^7.8",
+        "illuminate/broadcasting": "^12.0|^13.0",
+        "illuminate/console": "^12.0|^13.0",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/http": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.18",
+        "opis/json-schema": "^2.4",
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.5|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Folklore\\Pingpong\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Folklore\\Pingpong\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "format": "pint",
+        "lint": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=1G"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Folklore\\Pingpong\\PingpongServiceProvider"
+            ],
+            "aliases": {
+                "Pingpong": "Folklore\\Pingpong\\Facades\\Pingpong"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
