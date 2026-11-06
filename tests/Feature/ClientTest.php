@@ -103,16 +103,18 @@ final class ClientTest extends TestCase
         $this->assertSame(['https://contest.test', '/pingpong/socket.io'], array_values(array_intersect_key(Pingpong::clientConfig(), ['url' => 0, 'path' => 0])));
     }
 
-    public function test_it_explains_a_missing_connection_or_setting(): void
+    public function test_it_explains_a_missing_setting(): void
     {
         config()->set('broadcasting.connections.pingpong.secret', null);
-        try {
-            Pingpong::client();
-            $this->fail('No exception.');
-        } catch (InvalidArgumentException $exception) {
-            $this->assertStringContainsString('PINGPONG_SECRET', $exception->getMessage());
-        }
 
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('PINGPONG_SECRET');
+        Pingpong::client();
+    }
+
+    public function test_it_explains_a_missing_connection(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('No pingpong connection named [other]');
         Pingpong::client('other');
     }

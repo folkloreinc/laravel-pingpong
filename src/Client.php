@@ -29,7 +29,7 @@ class Client
     /**
      * Sends an event to the subscribers of up to 100 channels.
      *
-     * @param  list<string>  $channels
+     * @param  array<string>  $channels
      * @param  string|null  $exceptSocketId  A socket that must not receive it: the sender's (`toOthers()`).
      */
     public function publish(array $channels, string $event, mixed $data = null, ?string $exceptSocketId = null): void
@@ -40,7 +40,7 @@ class Client
     /**
      * Publishes up to 100 messages in one request, in order.
      *
-     * @param  list<array{channels: list<string>, event: string, data?: mixed, exceptSocketId?: string|null}>  $messages
+     * @param  list<array{channels: array<string>, event: string, data?: mixed, exceptSocketId?: string|null}>  $messages
      */
     public function publishBatch(array $messages): void
     {
@@ -79,7 +79,7 @@ class Client
     /**
      * Replaces the origins clients may connect from, for example when the application adds a domain.
      *
-     * @param  list<string>  $origins
+     * @param  array<string>  $origins
      * @return list<string>
      */
     public function replaceOrigins(array $origins): array
@@ -88,7 +88,7 @@ class Client
     }
 
     /**
-     * @param  list<string>  $channels
+     * @param  array<string>  $channels
      * @return array<string, mixed>
      */
     private static function message(array $channels, string $event, mixed $data, ?string $exceptSocketId): array
